@@ -58,7 +58,7 @@ struct raw_ptr_traits
     typename std::enable_if<std::is_copy_constructible<T>::value, object_pointer_type<T>>::type
 	ptr_clone(object_const_pointer_type<T> src)
 	{
-		return new T(*src);
+		return const_cast<T*>(src);
 	}
 
     template<class T> 
@@ -66,7 +66,7 @@ struct raw_ptr_traits
     typename std::enable_if<!std::is_copy_constructible<T>::value, object_pointer_type<T>>::type
 	ptr_clone(object_const_pointer_type<T> src)
 	{
-		return nullptr;
+		return const_cast<T*>(src);
 	}
 
 	template<typename T>

@@ -441,7 +441,7 @@ public:
 			object_pointer_type clone = Traits::ptr_clone(obj);
 			if (clone)
 			{
-				wrapped_object = class_info.wrap_object(clone, true);
+				wrapped_object = class_info.wrap_object(clone, false);
 			}
 		}
 		return wrapped_object;
